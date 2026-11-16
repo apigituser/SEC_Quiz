@@ -18,6 +18,30 @@ public class Question {
         this.correctOption = Character.toUpperCase(correctOption);
     }
 
+    public int getQuestionID() {
+        return questionID;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public String getOptionA() {
+        return optionA;
+    }
+
+    public String getOptionB() {
+        return optionB;
+    }
+
+    public String getOptionC() {
+        return optionC;
+    }
+
+    public String getOptionD() {
+        return optionD;
+    }
+
     public char getCorrectOption() {
         return correctOption;
     }
