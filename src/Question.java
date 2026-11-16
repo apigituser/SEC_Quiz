@@ -18,6 +18,10 @@ public class Question {
         this.correctOption = Character.toUpperCase(correctOption);
     }
 
+    public char getCorrectOption() {
+        return correctOption;
+    }
+
     public boolean isCorrect(char answer) {
         return Character.toUpperCase(answer) == correctOption;
     }
