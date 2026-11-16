@@ -1,6 +1,5 @@
 import java.util.*;
 import java.io.FileWriter;
-import java.io.File;
 
 public class QuizGenerator {
     
