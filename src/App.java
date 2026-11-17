@@ -54,8 +54,8 @@ public class App {
             System.out.println("\n" + APP_TITLE);
             System.out.println("1. Start Quiz");
             System.out.println("2. View Quiz Leaderboard");
-            System.out.println("3. Exit");
-            System.out.println("4. Generate Quiz");
+            System.out.println("3. Generate Quiz");
+            System.out.println("4. Exit");
             System.out.print("Choose an option (1-4): ");
             String menuChoice = scanner.nextLine().trim();
 
@@ -117,12 +117,13 @@ public class App {
                 }
 
             } else if (menuChoice.equals("3")) {
-                System.out.println("Exiting Online Quiz System. Goodbye!");
-                break;
-
-            } else if (menuChoice.equals("4")) {
                 QuizGenerator quizGenerator = new QuizGenerator();
                 quizGenerator.generateFile();
+
+            } else if (menuChoice.equals("4")) {
+                System.out.println("Exiting Online Quiz System. Goodbye!");
+                break;
+                
             } else {
                 System.out.println("Invalid option. Please enter 1, 2, 3 or 4.");
             }
