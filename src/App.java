@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.File;
 
 public class App {
-    private static final String APP_TITLE = "=== ONLINE QUIZ SYSTEM (By Sanil)===";
+    private static final String APP_TITLE = "=== ONLINE QUIZ SYSTEM ===";
 
     public static String[] getQuizNamesFromDirectory() {
         File folder = new File("questions/");
