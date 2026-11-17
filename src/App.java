@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.File;
 
 public class App {
-    private static final String APP_TITLE = "=== ONLINE QUIZ SYSTEM ===";
+    private static final String APP_TITLE = "=== ONLINE QUIZ SYSTEM (By Sanil)===";
 
     public static String[] getQuizNamesFromDirectory() {
         File folder = new File("questions/");
@@ -12,7 +12,7 @@ public class App {
 
         int i = 0;
         for (File entry: folder.listFiles()) {
-            String fileName = entry.toString().split("/")[1];
+            String fileName = entry.getName();
             String quizTitle = fileName.split("\\.")[0];
             QUIZ_NAMES[i] = quizTitle;
             i++;
