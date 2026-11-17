@@ -1,36 +1,62 @@
 import java.util.*;
+import java.io.File;
 
 public class App {
     private static final String APP_TITLE = "=== ONLINE QUIZ SYSTEM ===";
 
-    private static final String[] QUIZ_NAMES = {
-        "BASIC SCIENCE",
-        "COMPUTER BASICS",
-        "GENERAL KNOWLEDGE",
-        "HISTORY AND GEOGRAPHY",
-        "SPORTS TRIVIA"
-    };
+    public static String[] getQuizNamesFromDirectory() {
+        File folder = new File("questions/");
+        int totalFiles = folder.list().length;
 
-    private static final String[] QUIZ_FILES = {
-        "questions/BASIC_SCIENCE.csv",
-        "questions/COMPUTER_BASICS.csv",
-        "questions/GENERAL_KNOWLEDGE.csv",
-        "questions/HISTORY_AND_GEOGRAPHY.csv",
-        "questions/SPORTS_TRIVIA.csv"
-    };
+        String QUIZ_NAMES[] = new String[totalFiles];
+
+        int i = 0;
+        for (File entry: folder.listFiles()) {
+            String fileName = entry.toString().split("/")[1];
+            String quizTitle = fileName.split("\\.")[0];
+            QUIZ_NAMES[i] = quizTitle;
+            i++;
+        }
+        return QUIZ_NAMES;
+    }
+
+    public static String[] getQuizPathsFromDirectory() {
+
+        File folder = new File("questions/");
+        int totalFiles = folder.list().length;
+
+        String QUIZ_FILES[] = new String[totalFiles];
+
+        int i = 0;
+        for (File entry: folder.listFiles()) {
+            QUIZ_FILES[i] = entry.toString();
+            i++;
+        }
+        return QUIZ_FILES;
+    }
+
+    private static String[] QUIZ_NAMES = getQuizNamesFromDirectory();
+
+    private static String[] QUIZ_FILES = getQuizPathsFromDirectory();
 
     public static void main(String[] args) throws Exception {
+
         Scanner scanner = new Scanner(System.in);
         List<User> users = new ArrayList<>();
         Map<String, Integer> quizQuestionCounts = new HashMap<>();
         QuizRunner runner = new QuizRunner();
 
         while (true) {
+            QUIZ_NAMES = getQuizNamesFromDirectory();
+
+            QUIZ_FILES = getQuizPathsFromDirectory();
+
             System.out.println("\n" + APP_TITLE);
             System.out.println("1. Start Quiz");
             System.out.println("2. View Quiz Leaderboard");
             System.out.println("3. Exit");
-            System.out.print("Choose an option (1-3): ");
+            System.out.println("4. Generate Quiz");
+            System.out.print("Choose an option (1-4): ");
             String menuChoice = scanner.nextLine().trim();
 
             if (menuChoice.equals("1")) {
@@ -94,8 +120,11 @@ public class App {
                 System.out.println("Exiting Online Quiz System. Goodbye!");
                 break;
 
+            } else if (menuChoice.equals("4")) {
+                QuizGenerator quizGenerator = new QuizGenerator();
+                quizGenerator.generateFile();
             } else {
-                System.out.println("Invalid option. Please enter 1, 2, or 3.");
+                System.out.println("Invalid option. Please enter 1, 2, 3 or 4.");
             }
         }
 
